@@ -36,6 +36,7 @@ use Exception;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\scheduler\TaskHandler;
+use pocketmine\Server;
 use pocketmine\utils\Config;
 use pocketmine\world\Position;
 use ShockedPlot7560\FactionMaster\API\MainAPI;
@@ -96,11 +97,19 @@ class Utils {
 					return;
 				}
 
-				$route($player, $userEntity, $userPermissions, $params);
-				return;
+                try {
+                    $route($player, $userEntity, $userPermissions, $params);
+                } catch (Exception $exception){
+                    Server::getInstance()->getLogger()->logException($exception);
+                }
 			} else {
 				if ($route->getBackRoute() instanceof Route) {
 					$route = $route->getBackRoute();
+                    try {
+                        $route($player, $userEntity, $userPermissions, $params);
+                    } catch (Exception $exception){
+                        Server::getInstance()->getLogger()->logException($exception);
+                    }
 					$route($player, $userEntity, $userPermissions, $params);
 				}
 			}

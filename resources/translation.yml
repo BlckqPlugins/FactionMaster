@@ -1,0 +1,21 @@
+# DO NOT EDIT THIS LINE
+file-version: 3
+# DO NOT EDIT THIS LINE
+
+default-language: EN
+
+languages:
+  "FR": "fr_FR"
+  "EN": "en_EN"
+  "SPA": "es_SPA"
+  "TR": "tr_TR"
+  "BR": "pt_BR"
+  "RU": "ru_RU"
+
+languages-name:
+  "FR": "Français"
+  "EN": "English"
+  "SPA": "Español"
+  "TR": "Türkçe"
+  "BR": "Português"
+  "RU": "Русский"

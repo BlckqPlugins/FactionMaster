@@ -1,10 +1,7 @@
---- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/ShockedPlot7560/FactionMaster
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/BlckqPlugins/FactionMaster
 build-by-default: true
 branches:
-- stable
-- dev
-- pmmp4
-- next-minor
+- master
 projects:
   FactionMaster:
     path: ""

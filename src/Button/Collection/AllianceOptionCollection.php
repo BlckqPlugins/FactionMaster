@@ -53,7 +53,16 @@ class AllianceOptionCollection extends Collection {
 		parent::__construct(self::ALLIANCE_OPTION_COLLECTION);
 		$this->registerCallable(self::ALLIANCE_OPTION_COLLECTION, function (Player $player, UserEntity $user, FactionEntity $faction) {
 			foreach ($faction->getAlly() as $name) {
-				$this->register(new Ally(MainAPI::getFaction($name)));
+                if ($name != null) {
+                    if (MainAPI::getFaction($name) instanceof FactionEntity) {
+                        $this->register(new Ally(MainAPI::getFaction($name)));
+                    } else {
+                        return;
+                    }
+                } else {
+                    $player->sendMessage("§cName can't be null.");
+                    return;
+                }
 			}
 			$this->register(new SendInvitation(
 				RouteSlug::ALLIANCE_SEND_INVITATION_ROUTE,
